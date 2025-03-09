@@ -1,0 +1,45 @@
+# Dependencies
+node_modules
+**/node_modules
+
+# Build outputs
+**/dist
+**/build
+
+# Version control
+.git
+.gitignore
+
+# Environment files
+.env
+.env.*
+
+# Development files
+README.md
+**/README.md
+**/.DS_Store
+**/*.log
+
+# Docker files
+Dockerfile*
+docker-compose*
+.docker
+
+# Cache directories
+.turbo
+.next
+.nuxt
+.cache
+
+# Test files
+**/__tests__
+**/test
+**/tests
+coverage
+
+# Editor directories
+.idea
+.vscode
+
+# Data directories
+data/

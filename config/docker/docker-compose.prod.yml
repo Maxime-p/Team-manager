@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ../..
+      dockerfile: config/docker/prod/Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - directus
+
+  directus:
+    image: directus/directus:latest
+    ports:
+      - "8055:8055"
+    volumes:
+      - ../../data/uploads:/directus/uploads
+      - ../../data/database:/directus/database
+      - ../../data/extensions:/directus/extensions
+    env_file:
+      - ../env/directus.prod.env
+
+  redis:
+    image: redis:alpine
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes --maxmemory 512mb --maxmemory-policy allkeys-lru
+
+  caddy:
+    image: caddy:alpine
+    ports:
+      - "443:443"
+    volumes:
+      - ../caddy/Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - frontend
+      - directus
+
+volumes:
+  redis_data:
+  caddy_data:
+  caddy_config:

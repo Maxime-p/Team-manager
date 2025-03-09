@@ -1,0 +1,23 @@
+{
+  "name": "sports-team-manager",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "start": "turbo run start",
+    "docker:dev": "docker compose -f config/docker/docker-compose.dev.yml up",
+    "docker:dev:build": "docker compose -f config/docker/docker-compose.dev.yml up --build",
+    "docker:prod": "docker compose -f config/docker/docker-compose.prod.yml up",
+    "docker:prod:build": "docker compose -f config/docker/docker-compose.prod.yml up --build",
+    "clean": "turbo run clean && rm -rf node_modules"
+  },
+  "devDependencies": {
+    "turbo": "^1.12.4"
+  }
+}

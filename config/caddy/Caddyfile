@@ -1,0 +1,5 @@
+localhost {
+    reverse_proxy /api/* directus:8055
+    reverse_proxy /* frontend:80
+}
+}
