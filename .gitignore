@@ -1,4 +1,8 @@
+packages/backend
+
 *.prod.env
+
+.turbo
 
 # Logs
 logs
